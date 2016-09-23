@@ -31,21 +31,23 @@ public class MainActivity extends AppCompatActivity {
                 String panjang = edtPanjang.getText().toString().trim();
                 String lebar = edtLebar.getText().toString().trim();
 
-                if (panjang.isEmpty() && lebar.isEmpty()){
+                if  (lebar.matches("^\\.$") || panjang.matches("^\\.$")){
+                    Toast.makeText(getApplicationContext(), "Harap Mengisi Dengan Format Angka", Toast.LENGTH_SHORT).show();
+                }
+                else if (panjang.isEmpty() && lebar.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Harap Mengisi Form Panjang dan Lebar", Toast.LENGTH_SHORT).show();
                 }
                 else if (panjang.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Harap Mengisi Form Panjang", Toast.LENGTH_SHORT).show();
                 }
-                else if(lebar.isEmpty()){
+                else if  (lebar.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Harap Mengisi Form Lebar", Toast.LENGTH_SHORT).show();
                 }
-                else {
+                else
+                {
                     double p = Double.parseDouble(panjang);
                     double l = Double.parseDouble(lebar);
-
                     double luas = p * l;
-
                     txtLuas.setText("Luas : "+luas);
                 }
             }
